@@ -44,10 +44,5 @@ fn path_packer(
     title: String,        // Title for the dialog box
     default_path: String, // Default path for the dialog box to open to
 ) -> Option<PathBuf> {
-    let inital_option = tfd::open_file_dialog(&title, &default_path, None);
-
-    match inital_option {
-        Some(file_path) => Some(PathBuf::from(file_path)),
-        None => None,
-    }
+    tfd::open_file_dialog(&title, &default_path, None).map(|path| PathBuf::from(path))
 }
