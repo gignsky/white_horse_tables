@@ -22,20 +22,20 @@ fn get_paths() -> utils::FilePaths {
         "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
     );
 
-    let tickera_file_path = path_packer(
-        "Tickera CSV File".to_string(),
-        "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
-    );
-
-    let woo_commerce_file_path = path_packer(
-        "wooCommerce CSV File".to_string(),
-        "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
-    );
+    //     let tickera_file_path = path_packer(
+    //         "Tickera CSV File".to_string(),
+    //         "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
+    //     );
+    //
+    //     let woo_commerce_file_path = path_packer(
+    //         "wooCommerce CSV File".to_string(),
+    //         "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
+    //     );
 
     utils::FilePaths {
         square: square_file_path,
-        tickera: tickera_file_path,
-        woo_commerce: woo_commerce_file_path,
+        tickera: None,      // tickera_file_path,
+        woo_commerce: None, // woo_commerce_file_path,
         output: None,
     }
 }
