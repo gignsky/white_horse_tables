@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::path::PathBuf;
 use tinyfiledialogs as tfd;
 
 mod importers;
@@ -18,18 +18,18 @@ fn main() {
 
 fn get_paths() -> utils::FilePaths {
     let square_file_path = path_packer(
-        "Square CSV File",
-        "/home/gig/local_repos/white_horse_tables/source_files/",
+        "Square CSV File".to_string(),
+        "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
     );
 
     let tickera_file_path = path_packer(
-        "Tickera CSV File",
-        "/home/gig/local_repos/white_horse_tables/source_files/",
+        "Tickera CSV File".to_string(),
+        "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
     );
 
     let woo_commerce_file_path = path_packer(
-        "wooCommerce CSV File",
-        "/home/gig/local_repos/white_horse_tables/source_files/",
+        "wooCommerce CSV File".to_string(),
+        "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
     );
 
     utils::FilePaths {
@@ -40,14 +40,11 @@ fn get_paths() -> utils::FilePaths {
     }
 }
 
-fn path_packer(title: str, default_path: str) -> Option<Path> {
-    let inital_option = tfd::open_file_dialog(title, default_path, None);
+fn path_packer(title: String, default_path: String) -> Option<PathBuf> {
+    let inital_option = tfd::open_file_dialog(&title, &default_path, None);
 
     match inital_option {
-        Some(path) => {
-            let path = Path::new(&path.clone());
-            Some(path)
-        }
+        Some(file_path) => Some(PathBuf::from(file_path)),
         None => None,
     }
 }
