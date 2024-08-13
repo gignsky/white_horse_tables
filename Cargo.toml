@@ -5,5 +5,4 @@ edition = "2021"
 
 [dependencies]
 dollars = "0.0.1"
-tables = "0.1.5"
 tinyfiledialogs = "3.9.1"
