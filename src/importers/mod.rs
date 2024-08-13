@@ -6,7 +6,7 @@ mod square;
 // mod woo_commerce;
 
 pub fn import_files(paths: FilePaths) {
-    // let square_table: square:: = square::import(paths.square);
+    let square_table = square::import(paths.square);
     // let tickera_table = import_tickera_table(paths.tickera);
     // let woo_commerce_table = import_woo_commerce_table(paths.woo_commerce);
 

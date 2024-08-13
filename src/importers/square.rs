@@ -71,6 +71,11 @@ struct SquareRow {
     token: String,
 }
 
+struct UltraRow {
+    id: u64,
+    row: SquareRow,
+}
+
 pub fn import(file_path: Option<PathBuf>) {
     // let mut rdr = csv::Reader::from_path(file_path).unwrap();
     // for result in rdr.records() {
@@ -79,4 +84,11 @@ pub fn import(file_path: Option<PathBuf>) {
     // }
     // String::from("Square Table")
     println!("Importing Square Table");
+    let path = match file_path {
+        Some(path) => path,
+        None => panic!("No file path provided"),
+    };
+    println!("{:?}", path);
+
+    
 }
