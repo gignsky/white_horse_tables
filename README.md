@@ -1,4 +1,4 @@
-# Credit Card Convenience
+# White Horse Tables
 
 [![Documentation](https://img.shields.io/badge/documentation-visit-blue)](https://gignsky.github.io/white_horse_tables/)
 
