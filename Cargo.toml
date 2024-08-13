@@ -1,0 +1,7 @@
+[package]
+name = "white_horse_tables"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tinyfiledialogs = "3.9.1"
