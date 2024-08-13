@@ -40,7 +40,10 @@ fn get_paths() -> utils::FilePaths {
     }
 }
 
-fn path_packer(title: String, default_path: String) -> Option<PathBuf> {
+fn path_packer(
+    title: String,        // Title for the dialog box
+    default_path: String, // Default path for the dialog box to open to
+) -> Option<PathBuf> {
     let inital_option = tfd::open_file_dialog(&title, &default_path, None);
 
     match inital_option {
