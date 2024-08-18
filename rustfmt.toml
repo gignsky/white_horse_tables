@@ -1,0 +1,11 @@
+max_width = 180
+indent_style = "Visual"
+color = "Always"
+control_brace_style = "ClosingNextLine"
+format_code_in_doc_comments = true
+doc_comment_code_block_width = 180
+format_strings = true
+hard_tabs = true
+imports_indent = "Visual"
+imports_layout = "HorizontalVeritical"
+unstable_features = true
