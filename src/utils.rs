@@ -65,3 +65,11 @@ pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
 		output: None,
 	}
 }
+
+pub enum ExitCode {
+    GeneralError = 1,
+}
+
+pub fn exit(code: ExitCode) {
+    std::process::exit(code as i32);
+}
