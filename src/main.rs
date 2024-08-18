@@ -6,10 +6,10 @@
 #[macro_use]
 extern crate error_chain;
 
-// We'll put our errors in an `errors` module, and other modules in
-// this crate will `use errors::*;` to get access to everything
-// `error_chain!` creates.
-mod errors;
+
+#[cfg(test)]
+mod tests;
+mod errors; // We'll put our errors in an `errors` module, and other modules
 mod import;
 mod utils;
 
