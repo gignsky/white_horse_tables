@@ -5,7 +5,7 @@ use dollars::Dollars;
 use lib::{Category, Customer, EventType, Item, ItemType, Location, Unit};
 use std::path::Path;
 
-pub fn import(file_path: Option<String>) {
+pub fn import(file_path: Option<String>) -> Result<String, csv::Error> {
     // let mut rdr = csv::Reader::from_path(file_path).unwrap();
     // for result in rdr.records() {
     //     let record = result.unwrap();
@@ -20,13 +20,12 @@ pub fn import(file_path: Option<String>) {
         None => panic!("No file path provided"), //TODO - add a dialog box here, for reselection of file path, maybe use this as an opportunity to throw a custom error with a result.
     };
     println!("{:?}", path);
-    print_csv(path);
+    print_csv(path)
 }
 
-fn print_csv(filepath: String) -> Result<(), csv::Error> {
-    // let mut rdr = csv::Reader::from_path(Path::new(filepath));
+fn print_csv(filepath: String) -> Result<String, csv::Error> {
+    open_csv(filepath)
 
-    Ok(())
     //     // Print headers
     //     if let Some(headers) = rdr.headers()?.iter().next() {
     //         println!("{}", headers);
@@ -71,4 +70,11 @@ struct Row {
     employee: String,
     fulfillment_note: String,
     token: String,
+}
+
+fn open_csv(filepath: String) -> Result<String, csv::Error> {
+    match std::fs::File::open(&filepath) {
+        Ok(_) => Ok(filepath),
+        Err(e) => Err(csv::Error::from(e)),
+    }
 }

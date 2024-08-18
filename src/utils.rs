@@ -7,9 +7,8 @@ pub struct FilePaths {
 }
 
 pub struct MasterImportedTables {
-    pub square: String,
-    // pub tickera: String,
-    // pub woo_commerce: String,
+    pub square: Result<String, csv::Error>, // pub tickera: String,
+                                            // pub woo_commerce: String,
 }
 
 enum Source {
