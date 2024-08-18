@@ -24,6 +24,17 @@ pub struct FilePaths {
     pub output: Option<String>,
 }
 
+fn request_path(title: &str, default_path: String) -> String {
+    let path = tfd::open_file_dialog(title, &default_path, None);
+    match path {
+        Some(path) => {
+            println!("Importing from path: {:?}", path);
+            path
+        }
+        None => panic!("No file path provided"), //TODO - add a dialog box here, for reselection of file path, maybe use this as an opportunity to throw a custom error with a result.
+    }
+}
+
 pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
     match test_mode {
         Some(true) => {
@@ -68,16 +79,5 @@ pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
                 output: None,
             }
         }
-    }
-}
-
-fn request_path(title: &str, default_path: String) -> String {
-    let path = tfd::open_file_dialog(title, &default_path, None);
-    match path {
-        Some(path) => {
-            println!("Importing from path: {:?}", path);
-            path
-        }
-        None => panic!("No file path provided"), //TODO - add a dialog box here, for reselection of file path, maybe use this as an opportunity to throw a custom error with a result.
     }
 }
