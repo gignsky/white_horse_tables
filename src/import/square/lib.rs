@@ -9,7 +9,7 @@ pub enum Item {
     Snacks,
     Drafts,
     Wine,
-    CansBtls,
+    CansAndBottles,
     AnyAgeBeverages,
     None,
 }
@@ -33,5 +33,5 @@ pub enum Unit {
 }
 
 pub enum ItemType {
-    PhsyicalItem,
+    PhysicalItem,
 }
