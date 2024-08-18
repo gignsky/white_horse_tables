@@ -6,29 +6,9 @@ mod utils;
 
 #[allow(unused_mut)]
 fn main() {
-    let mut paths = get_paths();
-    // println!("Inital paths var: {:#?}", &paths);
+    let mut paths = utils::get_source_paths(Some(true));
+    println!("Inital paths var: {:#?}", &paths);
     // paths.output = Some("/home/gig/local_repos/white_horse_tables/output_files/".to_string());
     // let tables =
-    let path = import::import_files(paths);
-}
-
-fn get_paths() -> utils::FilePaths {
-    let square_file_path =
-        Some("/home/gig/local_repos/white_horse_tables/resources/small-copies/Square - items-2024-07-15-2024-08-09.csv".to_string());
-
-    let tickera_file_path = Some(
-            "/home/gig/local_repos/white_horse_tables/resources/small-copies/Tickera - Attendee List (24)".to_string(),
-        );
-
-    let woo_commerce_file_path = Some(
-            "/home/gig/local_repos/white_horse_tables/resources/small-copies/WooCommerce - wc-orders-report-export-17232178944415.csv".to_string(),
-        );
-
-    utils::FilePaths {
-        square: square_file_path,             // square_file_path,
-        tickera: tickera_file_path,           // tickera_file_path,
-        woo_commerce: woo_commerce_file_path, // woo_commerce_file_path,
-        output: None,
-    }
+    // let path = import::import_files(paths);
 }
