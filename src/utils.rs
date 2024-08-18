@@ -10,6 +10,19 @@ enum Source {
 	Tickera,
 	WooCommerce,
 }
+
+// #[test]
+// fn source_enum_test() {
+//     let source = Source::Square;
+//     assert_eq!(source, Source::Square);
+//
+//     let source = Source::Tickera;
+//     assert_eq!(source, Source::Tickera);
+//
+//     let source = Source::WooCommerce;
+//     assert_eq!(source, Source::WooCommerce);
+// }
+
 //
 // pub struct ImportedTable {
 //     pub source: Source,
