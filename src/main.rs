@@ -49,5 +49,6 @@ fn run() -> Result<()> {
     // paths.output = Some("/home/gig/local_repos/white_horse_tables/output_files/".to_string());
     // let tables =
     // let path = import::import_files(paths);
+
     Ok(())
 }

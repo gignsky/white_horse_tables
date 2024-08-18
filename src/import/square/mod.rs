@@ -72,8 +72,12 @@ fn print_csv(filepath: String) -> Result<String, csv::Error> {
 // }
 
 fn open_csv(filepath: String) -> Result<String, csv::Error> {
-    match std::fs::File::open(&filepath) {
-        Ok(_) => Ok(filepath),
-        Err(e) => Err(csv::Error::from(e)),
-    }
+    // match std::fs::File::open("contacts.csv") {
+    //     Ok(_) => Ok(filepath),
+    //     Err(e) => {
+    //         let nonsense = Err(csv::Error::from(e));
+    //         bail!("Error opening file: {:?}", nonsense);
+    //     }
+    // }
+    Ok(filepath)
 }
