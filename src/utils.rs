@@ -1,11 +1,9 @@
-use std::path::PathBuf;
-
 #[derive(Debug)]
 pub struct FilePaths {
-    pub square: Option<PathBuf>,
-    pub tickera: Option<PathBuf>,
-    pub woo_commerce: Option<PathBuf>,
-    pub output: Option<PathBuf>,
+    pub square: Option<String>,
+    pub tickera: Option<String>,
+    pub woo_commerce: Option<String>,
+    pub output: Option<String>,
 }
 
 pub struct MasterImportedTables {

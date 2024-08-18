@@ -1,34 +1,31 @@
-use std::path::PathBuf;
+#[allow(unused_imports)]
 use tinyfiledialogs as tfd;
 
 mod importers;
 mod utils;
-// mod import::tickera;
-// mod import::wooCommerce;
 
+#[allow(unused_mut)]
 fn main() {
     // println!("{:#?}", &paths);
     // paths.output = Option::Some(String::from(
     //     "/home/gig/local_repos/white_horse_tables/output_files/",
     // ));
     // println!("{:#?}", &paths);
-    let paths = get_paths();
-    let tables = importers::import_files(paths);
+    let mut paths = get_paths();
+    // println!("{:#?}", &paths);
+    // let tables =
+    importers::import_files(paths);
 }
 
 fn get_paths() -> utils::FilePaths {
-    let square_file_path = path_packer(
-        "Square CSV File".to_string(),
-        "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
-    );
+    let square_file_path =
+        Some("/home/gig/local_repos/white_horse_tables/source_files/".to_string());
 
     //     let tickera_file_path = path_packer(
-    //         "Tickera CSV File".to_string(),
     //         "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
     //     );
     //
     //     let woo_commerce_file_path = path_packer(
-    //         "wooCommerce CSV File".to_string(),
     //         "/home/gig/local_repos/white_horse_tables/source_files/".to_string(),
     //     );
 
@@ -38,11 +35,4 @@ fn get_paths() -> utils::FilePaths {
         woo_commerce: None, // woo_commerce_file_path,
         output: None,
     }
-}
-
-fn path_packer(
-    title: String,        // Title for the dialog box
-    default_path: String, // Default path for the dialog box to open to
-) -> Option<PathBuf> {
-    tfd::open_file_dialog(&title, &default_path, None).map(|path| PathBuf::from(path))
 }
