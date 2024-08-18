@@ -17,11 +17,11 @@ enum Source {
 // }
 
 #[derive(Debug)]
-struct FilePaths {
-    square: Option<String>,
-    tickera: Option<String>,
-    woo_commerce: Option<String>,
-    output: Option<String>,
+pub struct FilePaths {
+    pub square: Option<String>,
+    pub tickera: Option<String>,
+    pub woo_commerce: Option<String>,
+    pub output: Option<String>,
 }
 
 pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
