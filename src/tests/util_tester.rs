@@ -3,17 +3,6 @@ use crate::import;
 use crate::config;
 
 #[test]
-fn source_enum_test() {
-	for source in vec![utils::Source::Square, utils::Source::Tickera, utils::Source::WooCommerce] {
-		match source {
-			utils::Source::Square => assert_eq!(source, utils::Source::Square),
-			utils::Source::Tickera => assert_eq!(source, utils::Source::Tickera),
-			utils::Source::WooCommerce => assert_eq!(source, utils::Source::WooCommerce),
-		}
-	}
-}
-
-#[test]
 fn file_paths_struct_test() {
     let paths = utils::FilePaths {
         square: Some("path/to/square".to_string()),

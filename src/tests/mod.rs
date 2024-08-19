@@ -1,4 +1,5 @@
 mod util_tester;
+mod import;
 
 #[test]
 fn run_test() {

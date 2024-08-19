@@ -4,7 +4,7 @@ use log::info;
 // use dollars::Dollars;
 use serde::Deserialize;
 use crate::utils;
-use crate::import::lib::{Table, RowType};
+use crate::import::lib::{Table, RowType,Source};
 
 /// Opens a csv file and prints the data to the console.
 pub fn unpack_csv(filepath: String) -> Result<Table, csv::Error> {
@@ -21,7 +21,7 @@ pub fn unpack_csv(filepath: String) -> Result<Table, csv::Error> {
 
     let inital_table = Table {
         row_type: RowType::InitalRow,
-        table_source: utils::Source::Square,
+        table_source: Source::Square,
         rows: collected_vec,
     };
 

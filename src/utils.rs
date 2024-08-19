@@ -13,14 +13,6 @@
 /// For more information, refer to the documentation of the `tinyfiledialogs` crate.
 use tinyfiledialogs as tfd;
 
-/// Possible sources of the imported tables
-#[derive(PartialEq, Eq, Debug)]
-pub enum Source {
-	Square,
-	Tickera,
-	WooCommerce,
-}
-
 //
 // pub struct ImportedTable {
 //     pub source: Source,
