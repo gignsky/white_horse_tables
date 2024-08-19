@@ -95,7 +95,7 @@ pub fn get_source_paths(base_path: &str, test_mode: bool) -> FilePaths {
 	let (square, tickera, woo_commerce) = if test_mode {
 		(
 			"Square - items-2024-07-15-2024-08-09.csv".to_string(),
-			"Tickera - Attendee List (24)".to_string(),
+			"Tickera - Attendee List (24).csv".to_string(),
 			"WooCommerce - wc-orders-report-export-17232178944415.csv".to_string(),
 		)
 	} else {
