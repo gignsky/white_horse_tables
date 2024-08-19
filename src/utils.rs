@@ -13,34 +13,13 @@
 /// For more information, refer to the documentation of the `tinyfiledialogs` crate.
 use tinyfiledialogs as tfd;
 
-/// Represents a collection of imported csv files in table format.
-pub struct MasterImportedTables {
-	/// The imported square table
-	pub square: Result<String, csv::Error>,
-	// /// The imported tickera table
-	// pub tickera: String,
-	// /// The imported WooCommerce table
-	// pub woo_commerce: String,
+/// Possible sources of the imported tables
+#[derive(PartialEq, Eq, Debug)]
+pub enum Source {
+	Square,
+	Tickera,
+	WooCommerce,
 }
-
-// /// Possible sources of the imported tables
-// #[derive(PartialEq, Eq, Debug)]
-// enum Source {
-// 	Square,
-// 	Tickera,
-// 	WooCommerce,
-// }
-//
-// #[test]
-// fn source_enum_test() {
-// 	for source in vec![Source::Square, Source::Tickera, Source::WooCommerce] {
-// 		match source {
-// 			Source::Square => assert_eq!(source, Source::Square),
-// 			Source::Tickera => assert_eq!(source, Source::Tickera),
-// 			Source::WooCommerce => assert_eq!(source, Source::WooCommerce),
-// 		}
-// 	}
-// }
 
 //
 // pub struct ImportedTable {

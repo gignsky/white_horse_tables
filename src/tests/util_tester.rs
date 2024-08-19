@@ -3,12 +3,14 @@ use crate::import;
 use crate::config;
 
 #[test]
-fn master_imported_tables_struct_test() {
-    let tables = utils::MasterImportedTables {
-        square: Ok("Square Table".to_string()),
-    };
-
-    assert!(tables.square.is_ok());
+fn source_enum_test() {
+	for source in vec![utils::Source::Square, utils::Source::Tickera, utils::Source::WooCommerce] {
+		match source {
+			utils::Source::Square => assert_eq!(source, utils::Source::Square),
+			utils::Source::Tickera => assert_eq!(source, utils::Source::Tickera),
+			utils::Source::WooCommerce => assert_eq!(source, utils::Source::WooCommerce),
+		}
+	}
 }
 
 #[test]

@@ -2,10 +2,12 @@
 
 mod lib;
 
-use lib::InitalRow;
+use lib::{InitalRow, unpack_csv};
+use log::{debug, info};
+use crate::import::lib::Table;
 // use std::path::Path;
 
-pub fn import(file_path: Option<String>) -> Result<String, csv::Error> {
+pub fn import(file_path: Option<String>) -> Result<Table, csv::Error> {
     // let mut rdr = csv::Reader::from_path(file_path).unwrap();
     // for result in rdr.records() {
     //     let record = result.unwrap();
@@ -14,17 +16,18 @@ pub fn import(file_path: Option<String>) -> Result<String, csv::Error> {
     // String::from("Square Table")
     let path = match file_path {
         Some(path) => {
-            println!("Importing from path: {:?}", path);
+            info!("Importing from path: {:?}", path);
             path
         }
         None => panic!("No file path provided"), //TODO - add a dialog box here, for reselection of file path, maybe use this as an opportunity to throw a custom error with a result.
     };
-    println!("{:?}", path);
+    debug!("Square path to import: {:?}", path);
     print_csv(path)
 }
 
-fn print_csv(filepath: String) -> Result<String, csv::Error> {
-    open_csv(filepath)
+fn print_csv(filepath: String) -> Result<Table, csv::Error> {
+    let unpacked = lib::unpack_csv(filepath);
+    unpacked
 
     //     // Print headers
     //     if let Some(headers) = rdr.headers()?.iter().next() {
@@ -38,16 +41,4 @@ fn print_csv(filepath: String) -> Result<String, csv::Error> {
     //     }
     //
     //     Ok(())
-}
-
-fn open_csv(filepath: String) -> Result<String, csv::Error> {
-    println!("Opening file: {:?}", filepath);
-    let mut rdr = csv::Reader::from_path(filepath)?;
-    let mut index = 0;
-    for result in rdr.deserialize() {
-        let record: InitalRow = result?;
-        println!("{}: {:?}", index, record);
-        index += 1;
-    }
-    Ok(String::from("Square Table"))
 }

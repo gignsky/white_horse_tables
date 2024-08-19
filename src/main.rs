@@ -30,7 +30,7 @@ fn init_logger() {
 }
 
 #[allow(unused_imports)]
-use log::{debug, info, warn, error};
+use log::{debug, info, warn};
 
 /// The main function, handles the current state of the program.
 ///
@@ -68,7 +68,7 @@ fn run(ref test_mode_var: bool) -> Result<()> {
         true => utils::get_source_paths(config::BASE_PATH, true),
         false => utils::get_source_paths(config::BASE_PATH, false),
     };
-    info!("Inital paths var: {:#?}", &paths);
+    debug!("Inital paths var: {:#?}", &paths);
     // paths.output = Some("/home/gig/local_repos/white_horse_tables/output_files/".to_string());
     // let tables =
     // let path =
