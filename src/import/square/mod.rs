@@ -1,9 +1,8 @@
 //! This module is responsible for importing data from Square.
 
-// mod lib;
+mod lib;
 
-// use dollars::Dollars;
-// use lib::{Category, Customer, EventType, Item, ItemType, Location, Unit};
+use lib::InitalRow;
 // use std::path::Path;
 
 pub fn import(file_path: Option<String>) -> Result<String, csv::Error> {
@@ -41,45 +40,14 @@ fn print_csv(filepath: String) -> Result<String, csv::Error> {
     //     Ok(())
 }
 
-// struct Row {
-//     name: String,
-//     time: String,
-//     timezone: String,
-//     category: Category,
-//     item: Item,
-//     quantity: f32,
-//     price_point_name: String,
-//     sku: String,
-//     modifiers_applied: String,
-//     gross_sales: Dollars,
-//     discounts: Dollars,
-//     net_sales: Dollars,
-//     tax: Dollars,
-//     transaction_id: String,
-//     payment_id: String,
-//     device_name: String,
-//     notes: String,
-//     details: String,
-//     event_type: EventType,
-//     location: Location,
-//     dining_option: String,
-//     customer: Customer,
-//     unit: Unit,
-//     count: i32,
-//     itemization_type: ItemType,
-//     commission: Dollars,
-//     employee: String,
-//     fulfillment_note: String,
-//     token: String,
-// }
-
 fn open_csv(filepath: String) -> Result<String, csv::Error> {
-    // match std::fs::File::open("contacts.csv") {
-    //     Ok(_) => Ok(filepath),
-    //     Err(e) => {
-    //         let nonsense = Err(csv::Error::from(e));
-    //         bail!("Error opening file: {:?}", nonsense);
-    //     }
-    // }
-    Ok(filepath)
+    println!("Opening file: {:?}", filepath);
+    let mut rdr = csv::Reader::from_path(filepath)?;
+    let mut index = 0;
+    for result in rdr.deserialize() {
+        let record: InitalRow = result?;
+        println!("{}: {:?}", index, record);
+        index += 1;
+    }
+    Ok(String::from("Square Table"))
 }

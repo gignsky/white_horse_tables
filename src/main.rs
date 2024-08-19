@@ -22,6 +22,16 @@ mod config;
 #[allow(unused_imports)]
 use errors::*;
 
+/// The logger is only initialized in debug mode.
+#[cfg(debug_assertions)]
+#[allow(dead_code)]
+fn init_logger() {
+    env_logger::init();
+}
+
+#[allow(unused_imports)]
+use log::{debug, info, warn, error};
+
 /// The main function, handles the current state of the program.
 ///
 /// This function also handles the error chain and backtrace.
@@ -58,10 +68,11 @@ fn run(ref test_mode_var: bool) -> Result<()> {
         true => utils::get_source_paths(config::BASE_PATH, true),
         false => utils::get_source_paths(config::BASE_PATH, false),
     };
-    println!("Inital paths var: {:#?}", &paths);
+    info!("Inital paths var: {:#?}", &paths);
     // paths.output = Some("/home/gig/local_repos/white_horse_tables/output_files/".to_string());
     // let tables =
-    // let path = import::import_files(paths);
+    // let path =
+    import::import_files(paths);
 
     Ok(())
 }

@@ -18,5 +18,6 @@ pub fn import_files(paths: FilePaths) -> Result<MasterImportedTables, csv::Error
         // tickera: tickera_table,
         // woo_commerce: woo_commerce_table,
     };
+
     Ok(import_master)
 }
