@@ -14,6 +14,7 @@ mod tests;
 mod errors; // We'll put our errors in an `errors` module, and other modules
 mod import;
 mod utils;
+mod config;
 
 // This only gives access within this module. Make this `pub use errors::*;`
 // instead if the types must be accessible from other modules (e.g., within
@@ -21,9 +22,12 @@ mod utils;
 #[allow(unused_imports)]
 use errors::*;
 
-#[allow(unused_mut)]
+/// The main function, handles the current state of the program.
+///
+/// This function also handles the error chain and backtrace.
+/// it passes off most of the actual work to the `run` function.
 fn main() {
-    if let Err(ref e) = run() {
+    if let Err(ref e) = run(config::TEST_MODE) {
         use std::io::Write;
         let stderr = &mut ::std::io::stderr();
         let errmsg = "Error writing to stderr";
@@ -45,8 +49,15 @@ fn main() {
     }
 }
 
-fn run() -> Result<()> {
-    let mut paths = utils::get_source_paths(Some(true));
+/// The actual work of the program.
+///
+/// Runs and if any errors occur it returns a ErrorChain inside a result to the main function.
+#[allow(unused_mut)]
+fn run(ref test_mode_var: bool) -> Result<()> {
+    let paths = match test_mode_var {
+        true => utils::get_source_paths(config::BASE_PATH, true),
+        false => utils::get_source_paths(config::BASE_PATH, false),
+    };
     println!("Inital paths var: {:#?}", &paths);
     // paths.output = Some("/home/gig/local_repos/white_horse_tables/output_files/".to_string());
     // let tables =

@@ -1,3 +1,5 @@
+//! This module is responsible for importing data from Square.
+
 // mod lib;
 
 // use dollars::Dollars;

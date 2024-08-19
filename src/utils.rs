@@ -1,3 +1,5 @@
+//! Utility functions and types used by the program.
+
 /// Imports the `tinyfiledialogs` crate as `tfd`.
 ///
 /// This allows you to use the functions and types provided by the `tinyfiledialogs` crate
@@ -89,9 +91,8 @@ fn request_path_test() {
 /// The function will return the file paths of the csv files to be imported.
 /// If the test_mode is set to true, the function will return the file paths of the test csv files.
 /// If the test_mode is set to false, the function will open a file dialog box to request the file paths from the user.
-pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
-	let base_path = "/home/gig/local_repos/white_horse_tables/resources/small-copies";
-	let (square, tickera, woo_commerce) = if test_mode == Some(true) {
+pub fn get_source_paths(base_path: &str, test_mode: bool) -> FilePaths {
+	let (square, tickera, woo_commerce) = if test_mode {
 		(
 			"Square - items-2024-07-15-2024-08-09.csv".to_string(),
 			"Tickera - Attendee List (24)".to_string(),
@@ -104,10 +105,10 @@ pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
 			request_path("WooCommerce", base_path.to_string(), None),
 		)
 	};
-	let square_file_path = Some(if test_mode == Some(true) { format!("{}/{}", base_path, square) } else { square });
-	let tickera_file_path = Some(if test_mode == Some(true) { format!("{}/{}", base_path, tickera) } else { tickera });
-	let woo_commerce_file_path = Some(if test_mode == Some(true) {
-		format!("{}/{}", base_path, woo_commerce)
+	let square_file_path = Some(if test_mode { format!("{}{}", base_path, square) } else { square });
+	let tickera_file_path = Some(if test_mode { format!("{}{}", base_path, tickera) } else { tickera });
+	let woo_commerce_file_path = Some(if test_mode {
+		format!("{}{}", base_path, woo_commerce)
 	} else {
 		woo_commerce
 	});

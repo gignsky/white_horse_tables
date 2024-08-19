@@ -1,5 +1,6 @@
 use crate::utils;
 use crate::import;
+use crate::config;
 
 #[test]
 fn master_imported_tables_struct_test() {
@@ -27,7 +28,7 @@ fn file_paths_struct_test() {
 
 #[test]
 fn test_get_source_paths() {
-    let paths = utils::get_source_paths(Some(true));
+    let paths = utils::get_source_paths(config::BASE_PATH, config::TEST_MODE);
     assert!(paths.square.is_some());
     assert!(paths.tickera.is_some());
     assert!(paths.woo_commerce.is_some());
@@ -39,7 +40,7 @@ fn test_get_source_paths() {
 
 #[test]
 fn test_import_files_with_valid_paths() {
-    let paths = utils::get_source_paths(Some(true));
+    let paths = utils::get_source_paths(config::BASE_PATH, config::TEST_MODE);
     let result = import::import_files(paths);
     // assert_eq!(result, Ok());
 }

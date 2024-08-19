@@ -1,3 +1,5 @@
+//! This module is responsible for importing the CSV files into the program.
+
 use crate::utils::FilePaths;
 use crate::utils::MasterImportedTables;
 
@@ -5,6 +7,7 @@ mod square;
 // mod tickera;
 // mod woo_commerce;
 
+/// Imports the CSV files from the provided file paths.
 pub fn import_files(paths: FilePaths) -> Result<MasterImportedTables, csv::Error> {
     let square_import = square::import(paths.square);
     // let tickera_table = import_tickera_table(paths.tickera)?;
