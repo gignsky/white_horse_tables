@@ -5,23 +5,23 @@ pub struct MasterImportedTables {
 	                                        // pub woo_commerce: String,
 }
 
+#[derive(PartialEq, Eq, Debug)]
 enum Source {
 	Square,
 	Tickera,
 	WooCommerce,
 }
 
-// #[test]
-// fn source_enum_test() {
-//     let source = Source::Square;
-//     assert_eq!(source, Source::Square);
-//
-//     let source = Source::Tickera;
-//     assert_eq!(source, Source::Tickera);
-//
-//     let source = Source::WooCommerce;
-//     assert_eq!(source, Source::WooCommerce);
-// }
+#[test]
+fn source_enum_test() {
+	for source in vec![Source::Square, Source::Tickera, Source::WooCommerce] {
+		match source {
+			Source::Square => assert_eq!(source, Source::Square),
+			Source::Tickera => assert_eq!(source, Source::Tickera),
+			Source::WooCommerce => assert_eq!(source, Source::WooCommerce),
+		}
+	}
+}
 
 //
 // pub struct ImportedTable {
@@ -37,8 +37,12 @@ pub struct FilePaths {
 	pub output: Option<String>,
 }
 
-fn request_path(title: &str, default_path: String) -> String {
-	let path = tfd::open_file_dialog(title, &default_path, None);
+fn request_path(title: &str, default_path: String, test_mode: Option<bool>) -> String {
+	let path = match test_mode {
+		Some(true) => Some("path/to/file".to_string()),
+		_ => tfd::open_file_dialog(title, &default_path, None)
+	};
+
 	match path {
 		Some(path) => {
 			println!("Importing from path: {:?}", path);
@@ -46,6 +50,12 @@ fn request_path(title: &str, default_path: String) -> String {
 		}
 		None => panic!("No file path provided"), //TODO - add a dialog box here, for reselection of file path, maybe use this as an opportunity to throw a custom error with a result.
 	}
+}
+
+#[test]
+fn request_path_test() {
+    let path = request_path("Test", "path/to/file".to_string(), Some(true));
+    assert_eq!(path, "path/to/file".to_string());
 }
 
 pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
@@ -58,9 +68,9 @@ pub fn get_source_paths(test_mode: Option<bool>) -> FilePaths {
 		)
 	} else {
 		(
-			request_path("Square", base_path.to_string()),
-			request_path("Tickera", base_path.to_string()),
-			request_path("WooCommerce", base_path.to_string()),
+			request_path("Square", base_path.to_string(), None),
+			request_path("Tickera", base_path.to_string(), None),
+			request_path("WooCommerce", base_path.to_string(), None),
 		)
 	};
 	let square_file_path = Some(if test_mode == Some(true) { format!("{}/{}", base_path, square) } else { square });

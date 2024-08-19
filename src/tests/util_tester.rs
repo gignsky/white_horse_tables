@@ -1,14 +1,14 @@
 use crate::utils;
 use crate::import;
 
-// #[test]
-// fn master_imported_tables_struct_test() {
-//     let tables = utils::MasterImportedTables {
-//         square: Ok("Square Table".to_string()),
-//     };
-//
-//     assert_eq!(tables.square, Ok("Square Table".to_string()));
-// }
+#[test]
+fn master_imported_tables_struct_test() {
+    let tables = utils::MasterImportedTables {
+        square: Ok("Square Table".to_string()),
+    };
+
+    assert!(tables.square.is_ok());
+}
 
 #[test]
 fn file_paths_struct_test() {
@@ -26,7 +26,7 @@ fn file_paths_struct_test() {
 }
 
 #[test]
-fn test_get_paths() {
+fn test_get_source_paths() {
     let paths = utils::get_source_paths(Some(true));
     assert!(paths.square.is_some());
     assert!(paths.tickera.is_some());
@@ -42,4 +42,10 @@ fn test_import_files_with_valid_paths() {
     let paths = utils::get_source_paths(Some(true));
     let result = import::import_files(paths);
     // assert_eq!(result, Ok());
+}
+
+#[test]
+fn exit_code_enum_test() {
+    let exit_code = utils::ExitCode::GeneralError;
+    assert_eq!(exit_code as i32, 1);
 }
