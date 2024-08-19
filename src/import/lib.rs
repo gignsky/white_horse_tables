@@ -2,27 +2,27 @@
 
 use crate::utils;
 
-/// A table of data from the Square csv file.
+/// A table of data from the csv file.
 ///
-/// This represents the table of data from the Square csv file, either before or after it has been cleaned up.
+/// This represents the table of data from the csv file, either before or after it has been cleaned up.
 pub struct Table {
     /// The type of row that the table contains.
     ///
-    /// this might be the inital row of data from the Square csv file, or the final row of data from the Square csv file.
+    /// this might be the inital row of data from the csv file, or the final row of data from the csv file.
     pub row_type: RowType,
     /// The source of the table.
     ///
-    /// This is the source of the table, in this case it is always Square.
+    /// This is the source of the table, in this case it is always.
     pub table_source: utils::Source,
     /// The rows of data in the table.
     pub rows: Vec<RowType>
 }
 
-/// An enum representing the types of rows available in the Square csv file.
+/// An enum representing the types of rows available in the csv file.
 pub enum RowType {
-    /// The inital row of data from the Square csv file.
+    /// The inital row of data from the csv file.
     InitalRow,
-    /// The final row of data from the Square csv file.
+    /// The final row of data from the csv file.
     FinalRow,
 }
 
