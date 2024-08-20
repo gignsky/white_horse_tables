@@ -3,21 +3,6 @@ use crate::import;
 use crate::config;
 
 #[test]
-fn file_paths_struct_test() {
-    let paths = utils::FilePaths {
-        square: Some("path/to/square".to_string()),
-        tickera: Some("path/to/tickera".to_string()),
-        woo_commerce: Some("path/to/woo_commerce".to_string()),
-        output: Some("path/to/output".to_string()),
-    };
-
-    assert_eq!(paths.square, Some("path/to/square".to_string()));
-    assert_eq!(paths.tickera, Some("path/to/tickera".to_string()));
-    assert_eq!(paths.woo_commerce, Some("path/to/woo_commerce".to_string()));
-    assert_eq!(paths.output, Some("path/to/output".to_string()));
-}
-
-#[test]
 fn test_get_source_paths() {
     let paths = utils::get_source_paths(config::BASE_PATH, config::TEST_MODE);
     assert!(paths.square.is_some());
@@ -33,11 +18,5 @@ fn test_get_source_paths() {
 fn test_import_files_with_valid_paths() {
     let paths = utils::get_source_paths(config::BASE_PATH, config::TEST_MODE);
     let result = import::import_files(paths);
-    // assert_eq!(result, Ok());
-}
-
-#[test]
-fn exit_code_enum_test() {
-    let exit_code = utils::ExitCode::GeneralError;
-    assert_eq!(exit_code as i32, 1);
+    assert_eq!(result, Ok());
 }

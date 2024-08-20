@@ -1,0 +1,13 @@
+[package]
+name = "wh_converter"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+wh_shared_lib = { path = "../wh_shared_lib" }
+wh_api = { path = "../wh_api" }
+tinyfiledialogs = "3.9.1"
+log = "0.4.22"
+
+[dev-dependencies]
+env_logger = "0.11.5"

@@ -1,12 +1,14 @@
 //! This module is responsible for importing the CSV files into the program.
 
-pub mod lib;
+use super::lib;
+use lib::FilePaths;
+use lib::import::MasterImportedTables;
+
+
 mod square;
 // mod tickera;
 // mod woo_commerce;
 
-use crate::utils::FilePaths;
-use lib::MasterImportedTables;
 
 /// Imports the CSV files from the provided file paths.
 pub fn import_files(paths: FilePaths) -> Result<MasterImportedTables, csv::Error> {
