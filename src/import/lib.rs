@@ -20,9 +20,9 @@ pub struct Table {
 #[derive(PartialEq, Eq, Debug)]
 pub enum RowType {
     /// The inital row of data from the csv file.
-    InitalRow,
+    InitalRow(Vec<Row>),
     /// The final row of data from the csv file.
-    FinalRow,
+    FinalRow(Vec<Row>),
 }
 
 /// Represents a collection of imported csv files in table format.
@@ -41,4 +41,9 @@ pub enum Source {
 	Square,
 	Tickera,
 	WooCommerce,
+}
+
+
+pub trait InitalRow {
+    fn new(&self) -> Self;
 }
