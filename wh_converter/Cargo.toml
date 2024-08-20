@@ -8,6 +8,8 @@ wh_shared_lib = { path = "../wh_shared_lib" }
 wh_api = { path = "../wh_api" }
 tinyfiledialogs = "3.9.1"
 log = "0.4.22"
+thiserror = "1.0.63"
 
 [dev-dependencies]
+anyhow = "1.0.86"
 env_logger = "0.11.5"
