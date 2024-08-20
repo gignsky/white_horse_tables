@@ -2,14 +2,16 @@
 
 use log::debug;
 use wh_api as api;
+use crate::prelude::*;
 use wh_shared_lib as lib;
 
 #[cfg(test)]
 mod tests;
 // mod errors; // We'll put our errors in an `errors` module, and other modules
 mod config;
-mod exits;
+mod error;
 mod utils;
+mod prelude;
 
 /// The main function, handles the current state of the program.
 ///
@@ -17,7 +19,7 @@ mod utils;
 /// it passes off most of the actual work to the `run` function.
 ///
 /// TODO! ErrorChain is deprecated, and needs to be removed!!!
-fn main() {
+fn main() -> Result(){
 //     if let Err(ref e) = run(config::TEST_MODE) {
 //         use std::io::Write;
 //         let stderr = &mut ::std::io::stderr();
@@ -39,7 +41,8 @@ fn main() {
 //         exits::ExitCode::GeneralError.exit();
 //     }
     run(config::TEST_MODE);
-}
+    Ok(())
+})
 
 /// The actual work of the program.
 ///

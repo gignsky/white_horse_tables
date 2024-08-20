@@ -1,7 +1,7 @@
 #[test]
 fn exit_code_enum_test() {
-    use crate::exits;
+    use crate::error;
 
-    let exit_code = exits::ExitCode::GeneralError;
+    let exit_code = error::Error::Generic(());
     assert_eq!(exit_code as i32, 1);
 }
