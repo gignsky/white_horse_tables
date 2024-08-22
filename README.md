@@ -6,6 +6,8 @@
 
 #TODO!!!!!!! NEED TO WRITE
 
+#![feature(format_args_capture)]
+
 ## Features
 
 #TODO!!!!!!!
